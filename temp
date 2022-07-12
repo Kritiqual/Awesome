@@ -1,0 +1,39 @@
+#282a36
+#191a21
+#f8f8f2
+#ffffff
+#44475a
+#7f848e
+#6272a4
+#8d92ff
+
+
+#8be9fd
+#2cccff
+#50fa7b
+#20E3B2
+#ffb86c
+#eac394
+#ff79c6
+#ff6bcb
+#bd93f9
+#9b87fd
+#ff5555
+#ff6e6e
+#f1fa8c
+#fde181
+
+==================
+bg = #282a36
+fg = #f8f8f2
+cur = #44475a
+cmt = #6272a4
+
+cyan = #8be9fd
+green = #50fa7b
+orange = #ffb86c
+pink = #ff79c6
+purple = #bd93f9
+red = #ff5555
+yellow = #f1fa8c
+==================

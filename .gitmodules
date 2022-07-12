@@ -1,0 +1,135 @@
+[submodule "Resources/AL/Suconakh/"]
+	path = Resources/AL/Suconakh
+	url = https://github.com/suconakh/awesome-awesome-rc
+	shallow = true
+	ignore = dirty
+[submodule "Resources/AL/Worron/"]
+	path = Resources/AL/Worron
+	url = https://github.com/worron/awesome-config
+	shallow = true
+	ignore = dirty
+[submodule "Resources/AL/Bling"]
+	path = Resources/AL/Bling
+	url = https://github.com/BlingCorp/bling
+	shallow = true
+	ignore = dirty
+[submodule "Resources/AL/Vicious"]
+	path = Resources/AL/Vicious
+	url = https://github.com/vicious-widgets/vicious
+	shallow = true
+	ignore = dirty
+[submodule "Resources/AL/Lain"]
+	path = Resources/AL/Lain
+	url = https://github.com/lcpz/lain
+	shallow = true
+	ignore = dirty
+[submodule "Resources/AL/Rubato"]
+	path = Resources/AL/Rubato
+	url = https://github.com/andOrlando/rubato
+	shallow = true
+	ignore = dirty
+[submodule "Resources/AL/Layout-machi"]
+	path = Resources/AL/Layout-machi
+	url = https://github.com/xinhaoyuan/layout-machi
+	shallow = true
+	ignore = dirty
+[submodule "Resources/AL/Awestore"]
+	path = Resources/AL/Awestore
+	url = https://github.com/K4rakara/awestore
+	shallow = true
+	ignore = dirty
+[submodule "Resources/AL/Awesomewm-widgets"]
+	path = Resources/AL/Awesomewm-widgets
+	url = https://github.com/streetturtle/awesome-wm-widgets
+	shallow = true
+	ignore = dirty
+[submodule "Resources/AL/Material-shell"]
+	path = Resources/AL/Material-shell
+	url = https://github.com/material-shell/material-awesome
+	shallow = true
+	ignore = dirty
+[submodule "Resources/AL/Material-shell-HikariKnight"]
+	path = Resources/AL/Material-shell-HikariKnight
+	url = https://github.com/HikariKnight/material-awesome
+	shallow = true
+	ignore = dirty
+[submodule "Resources/AL/The-glorious-dotfiles"]
+	path = Resources/AL/The-glorious-dotfiles
+	url = https://github.com/manilarome/the-glorious-dotfiles
+	shallow = true
+	ignore = dirty
+[submodule "Resources/AL/Awesome-freedesktop"]
+	path = Resources/AL/Awesome-freedesktop
+	url = https://github.com/lcpz/awesome-freedesktop
+	shallow = true
+	ignore = dirty
+[submodule "Resources/AS/Elenapan"]
+	path = Resources/AS/Elenapan
+	url = https://github.com/elenapan/dotfiles
+	shallow = true
+	ignore = dirty
+[submodule "Resources/AS/Jeremie1001"]
+	path = Resources/AS/Jeremie1001
+	url = https://github.com/Jeremie1001/dotfiles
+	shallow = true
+	ignore = dirty
+[submodule "Resources/AS/NeoPublic"]
+	path = Resources/AS/NeoPublic
+	url = https://github.com/jazz-g/NeoPublic
+	shallow = true
+	ignore = dirty
+[submodule "Resources/AS/ChocolateBread799"]
+	path = Resources/AS/ChocolateBread799
+	url = https://github.com/ChocolateBread799/dotfiles
+	shallow = true
+	ignore = dirty
+[submodule "Resources/AS/Mofiqul"]
+	path = Resources/AS/Mofiqul
+	url = https://github.com/Mofiqul/awesome-shell
+	shallow = true
+	ignore = dirty
+[submodule "Resources/AS/Rxyhn"]
+	path = Resources/AS/Rxyhn
+	url = https://github.com/rxyhn/dotfiles
+	shallow = true
+	ignore = dirty
+[submodule "Resources/AS/Niraj998"]
+	path = Resources/AS/Niraj998
+	url = https://github.com/niraj998/awesome
+	shallow = true
+	ignore = dirty
+[submodule "Resources/AS/Saimoomedits"]
+	path = Resources/AS/Saimoomedits
+	url = https://github.com/saimoomedits/dotfiles
+	shallow = true
+	ignore = dirty
+[submodule "Resources/AS/Potamides"]
+	path = Resources/AS/Potamides
+	url = https://github.com/potamides/dotfiles
+	shallow = true
+	ignore = dirty
+[submodule "Resources/AS/Manas140"]
+	path = Resources/AS/Manas140
+	url = https://github.com/Manas140/dotfiles
+	shallow = true
+	ignore = dirty
+[submodule "Resources/AS/NTBBloodbath"]
+	path = Resources/AS/NTBBloodbath
+	url = https://github.com/NTBBloodbath/dotfiles
+	shallow = true
+	ignore = dirty
+[submodule "Resources/AS/Nuxshed"]
+	path = Resources/AS/Nuxshed
+	url = https://github.com/nuxshed/dotfiles
+	shallow = true
+	ignore = dirty
+[submodule "Resources/AS/Nekonako"]
+	path = Resources/AS/Nekonako
+	url = https://github.com/nekonako/dotfiles
+	shallow = true
+	ignore = dirty
+[submodule "Resources/AS/Szorfein"]
+	path = Resources/AS/Szorfein
+	url = https://github.com/szorfein/dotfiles
+	shallow = true
+	ignore = dirty
