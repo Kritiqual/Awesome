@@ -1,10 +1,10 @@
-[submodule "Resources/AL/Suconakh/"]
-	path = Resources/AL/Suconakh
+[submodule "Resources/AL/Awesome-rc"]
+	path = Resources/AL/Awesome-rc
 	url = https://github.com/suconakh/awesome-awesome-rc
 	shallow = true
 	ignore = dirty
-[submodule "Resources/AL/Worron/"]
-	path = Resources/AL/Worron
+[submodule "Resources/AL/Awesome-worron"]
+	path = Resources/AL/Awesome-worron
 	url = https://github.com/worron/awesome-config
 	shallow = true
 	ignore = dirty
