@@ -233,6 +233,17 @@ ruled.client.connect_signal("request::rules", function()
     --<~>--
     ruled.client.append_rule({
         rule_any = {
+            class = { "dolphin" },
+        },
+        properties = {
+            floating = true,
+            width = screen_width * 0.45,
+            height = screen_height * 0.5,
+            placement = awful.placement.top_left,
+        },
+    })
+    ruled.client.append_rule({
+        rule_any = {
             class = { "Thunar", "fm" },
         },
         except_any = {
@@ -375,6 +386,18 @@ ruled.client.connect_signal("request::rules", function()
     })
     --<~>--
     ruled.client.append_rule({
+        rule_any = { class = { "Qalculate-gtk" } },
+        properties = {
+            floating = true,
+            x = 0,
+            y = 0,
+            width = 712,
+            height = 512,
+            placement = awful.placement.top_left,
+        },
+    })
+    --<~>--
+    ruled.client.append_rule({
         rule_any = {
             class = {
                 "qbittorrent",
@@ -387,6 +410,25 @@ ruled.client.connect_signal("request::rules", function()
             y = 0,
             width = screen_width / 3,
             height = screen_height / 3,
+        },
+    })
+    --<~>--
+    ruled.client.append_rule({
+        rule_any = {
+            class = {
+                "qt5ct",
+                "Kvantum Manager",
+            },
+            instance = {
+                "kvantummanager",
+            },
+        },
+        properties = {
+            floating = true,
+            width = screen_width * 0.45,
+            height = screen_height * 0.54,
+            placement = awful.placement.top_left,
+            size_hints_honor = true,
         },
     })
     --<~>--

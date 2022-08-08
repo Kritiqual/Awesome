@@ -7,19 +7,19 @@ local styles = {
     "mixed",
 }
 --<~>--
-local env = {
+return {
     chosen_styles = styles[1],
-    term = "kitty -1 --class term",
-    fterm = "kitty -1 --class fterm",
+    term = "kitty",
+    fterm = "kitty --class fterm",
     veditor = "code",
-    editor = "kitty -1 --class editor --detach nvim",
+    editor = "kitty --class editor -o tab_bar_min_tabs=2 --detach nvim",
     vfm = "thunar",
-    fm = "kitty -1 --class fm --detach ranger",
+    fm = "kitty --class fm -o tab_bar_min_tabs=2 --detach ranger",
     browser = "firefox",
     mchat = "caprine",
     dchat = "discord",
-    music_app = "kitty -1 --class music --detach ncmpcpp",
-    sys_mon = "kitty -1 --class sys_mon --detach bpytop",
+    music_app = "kitty --class music -o tab_bar_min_tabs=2 --detach ncmpcpp",
+    sys_mon = "kitty --class sys_mon -o tab_bar_min_tabs=2 --detach bpytop",
     web_search_cmd = "xdg-open https://google.com/?q=",
     dirs = {
         dl = os.getenv("XDG_DOWNLOAD_DIR") or "~/Downloads",
@@ -49,5 +49,3 @@ local env = {
         -- awful.layout.suit.corner.se,
     },
 }
---<~>--
-return env
