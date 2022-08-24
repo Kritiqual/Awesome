@@ -8,10 +8,10 @@ local dpi = xresources.apply_dpi
 local x = require("themes.colors")
 --<~>--
 return {
-    font = "Iosevka NF 11",
-    title_font = "Iosevka NF 14",
-    sub_title_font = "Iosevka NF 9",
-    context_font = "Iosevka NF 11",
+    font = "FiraCode NF 11",
+    title_font = "FiraCode NF 14",
+    sub_title_font = "FiraCode NF 9",
+    context_font = "FiraCode NF 11",
     --<~>--
     corner_radius = dpi(20),
     border_width = dpi(1),

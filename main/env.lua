@@ -2,24 +2,22 @@
 --|> USER'S VARIABLES INIT <|--
 --\=========================/--
 local awful = require("awful")
-local styles = {
-    "pure",
-    "mixed",
-}
+local term = "kitty"
+local term_o = term .. " -o tab_bar_min_tabs=2"
 --<~>--
 return {
-    chosen_styles = styles[1],
-    term = "kitty",
-    fterm = "kitty --class fterm",
+    rep = false, -- true if use polybar + eww + rofi
+    term = term,
+    fterm = term .. " --class fterm",
     veditor = "code",
-    editor = "kitty --class editor -o tab_bar_min_tabs=2 --detach nvim",
+    editor = term_o .. " --class editor --detach nvim",
     vfm = "thunar",
-    fm = "kitty --class fm -o tab_bar_min_tabs=2 --detach ranger",
+    fm = term_o .. " --class fm --detach ranger",
     browser = "firefox",
     mchat = "caprine",
     dchat = "discord",
-    music_app = "kitty --class music -o tab_bar_min_tabs=2 --detach ncmpcpp",
-    sys_mon = "kitty --class sys_mon -o tab_bar_min_tabs=2 --detach bpytop",
+    music_app = term_o .. " --class music --detach ncmpcpp",
+    sys_mon = term_o .. " --class sys_mon --detach bpytop",
     web_search_cmd = "xdg-open https://google.com/?q=",
     dirs = {
         dl = os.getenv("XDG_DOWNLOAD_DIR") or "~/Downloads",
