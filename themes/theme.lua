@@ -19,13 +19,13 @@ return {
     --<~>--
     bg_normal = x.bg,
     bg_focus = x.cur,
-    bg_urgent = x.c0,
+    bg_urgent = x.r,
     fg_normal = x.fg,
-    fg_focus = x.fg_2,
+    fg_focus = x.fg2,
     fg_urgent = x.fg,
     --<~>--
     border_normal = x.bg,
-    border_focus = x.c4,
+    border_focus = x.c,
     titlebars_enabled = false,
     -- wallpaper = "~/.dots/home/.config/awesome/themes/bg.jpg",
 }
