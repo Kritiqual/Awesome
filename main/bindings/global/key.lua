@@ -27,15 +27,17 @@ awful.keyboard.append_global_keybindings({
 --<~>--
 awful.keyboard.append_global_keybindings({
     -------------------------------------------------------
-    ----                     Picom                     ----
+    ----                    Testing                    ----
     -------------------------------------------------------
-    -- Just for testing
     awful.key({ mod.super, mod.shift }, "p", function()
         awful.spawn.with_shell("picom -b --experimental-backends --config ~/.dots/home/.config/picom/picom.conf")
     end, { description = "Spawn picom", group = "launcher" }),
     awful.key({ mod.super, mod.ctrl }, "p", function()
         awful.spawn.with_shell("pkill picom")
     end, { description = "Kill picom", group = "launcher" }),
+    awful.key({ mod.super, mod.ctrl }, "Return", function()
+        awful.spawn("wezterm")
+    end),
     -------------------------------------------------------
     ----                Spawn terminal                 ----
     -------------------------------------------------------
