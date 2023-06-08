@@ -59,9 +59,9 @@ myawesomemenu = {
             hotkeys_popup.show_help(nil, awful.screen.focused())
         end,
     },
-    { "manual", terminal .. " -e man awesome" },
+    { "manual",      terminal .. " -e man awesome" },
     { "edit config", editor_cmd .. " " .. awesome.conffile },
-    { "restart", awesome.restart },
+    { "restart",     awesome.restart },
     {
         "quit",
         function()
@@ -72,7 +72,7 @@ myawesomemenu = {
 
 mymainmenu = awful.menu({
     items = {
-        { "awesome", myawesomemenu, beautiful.awesome_icon },
+        { "awesome",       myawesomemenu, beautiful.awesome_icon },
         { "open terminal", terminal },
     },
 })
@@ -213,14 +213,16 @@ screen.connect_signal("request::desktop_decoration", function(s)
         screen = s,
         widget = {
             layout = wibox.layout.align.horizontal,
-            { -- Left widgets
+            {
+                -- Left widgets
                 layout = wibox.layout.fixed.horizontal,
                 mylauncher,
                 s.mytaglist,
                 s.mypromptbox,
             },
             s.mytasklist, -- Middle widget
-            { -- Right widgets
+            {
+                -- Right widgets
                 layout = wibox.layout.fixed.horizontal,
                 mykeyboardlayout,
                 wibox.widget.systray(),
@@ -509,9 +511,9 @@ ruled.client.connect_signal("request::rules", function()
                 "Event Tester", -- xev.
             },
             role = {
-                "AlarmWindow", -- Thunderbird's calendar.
+                "AlarmWindow",   -- Thunderbird's calendar.
                 "ConfigManager", -- Thunderbird's about:config.
-                "pop-up", -- e.g. Google Chrome's (detached) Developer Tools.
+                "pop-up",        -- e.g. Google Chrome's (detached) Developer Tools.
             },
         },
         properties = { floating = true },
@@ -546,20 +548,24 @@ client.connect_signal("request::titlebars", function(c)
     }
 
     awful.titlebar(c).widget = {
-        { -- Left
+        {
+            -- Left
             awful.titlebar.widget.iconwidget(c),
             buttons = buttons,
             layout = wibox.layout.fixed.horizontal,
         },
-        { -- Middle
-            { -- Title
+        {
+            -- Middle
+            {
+                -- Title
                 align = "center",
                 widget = awful.titlebar.widget.titlewidget(c),
             },
             buttons = buttons,
             layout = wibox.layout.flex.horizontal,
         },
-        { -- Right
+        {
+            -- Right
             awful.titlebar.widget.floatingbutton(c),
             awful.titlebar.widget.maximizedbutton(c),
             awful.titlebar.widget.stickybutton(c),

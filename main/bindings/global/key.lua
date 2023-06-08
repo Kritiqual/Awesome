@@ -4,19 +4,19 @@
 --\=================================================/--
 -------------------------------------------------------
 local awful = require("awful")
-local gears = require("gears")
 local helpers = require("helpers")
 local env = require("main.env")
 local mod = require("main.bindings.mod")
-screen_width = awful.screen.focused().geometry.width
-screen_height = awful.screen.focused().geometry.height
+local naughty = require("naughty")
+local screen_width = awful.screen.focused().geometry.width
+local screen_height = awful.screen.focused().geometry.height
 --<~>--
 local hotkeys_popup = require("awful.hotkeys_popup")
 local menubar = require("menubar")
 menubar.utils.terminal = env.term
 awful.keyboard.append_global_keybindings({
-    -- TODO: add keybindings for exitscreen/dock/bar, exitscreen-related,
-    -- TODO: and maybe change quit awesome to exitscreen?
+    --> add keybindings for exitscreen/dock/bar, exitscreen-related,
+    --> and maybe change quit awesome to exitscreen?
     awful.key({ mod.super, mod.ctrl }, "r", awesome.restart, { description = "Restart Awesome", group = "awesome" }),
     awful.key({ mod.super, mod.ctrl }, "q", awesome.quit, { description = "Quit Awesome", group = "awesome" }),
     awful.key({ mod.super }, "p", function()
@@ -30,7 +30,7 @@ awful.keyboard.append_global_keybindings({
     ----                    Testing                    ----
     -------------------------------------------------------
     awful.key({ mod.super, mod.shift }, "p", function()
-        awful.spawn.with_shell("picom -b --experimental-backends --config ~/.dots/home/.config/picom/picom.conf")
+        awful.spawn.with_shell("picom")
     end, { description = "Spawn picom", group = "launcher" }),
     awful.key({ mod.super, mod.ctrl }, "p", function()
         awful.spawn.with_shell("pkill picom")
@@ -38,6 +38,24 @@ awful.keyboard.append_global_keybindings({
     awful.key({ mod.super, mod.ctrl }, "Return", function()
         awful.spawn("wezterm")
     end),
+    awful.key({ mod.super, mod.ctrl, mod.shift }, "m", function()
+        awful.spawn.with_shell("~/.local/share/bin/touchpad")
+    end),
+    awful.key({}, "Print", function()
+        awful.spawn.with_shell("flameshot gui")
+    end, { description = "Spawn flameshot gui", group = "launcher" }),
+    awful.key({ mod.super, mod.alt }, "c", function()
+        helpers.SoD_tap(
+            function() naughty.notify({ title = "SoD test", text = "We got a single tap" }) end,
+            function() naughty.notify({ title = "SoD test", text = "We got a double tap" }) end
+        )
+    end),
+    -------------------------------------------------------
+    ----            Spawn VIA/VIAL/QMK stuff            ----
+    -------------------------------------------------------
+    awful.key({ mod.super, mod.ctrl, mod.shift }, "v", function()
+        helpers.RoS("via")
+    end, { description = "Open VIA", group = "launcher" }),
     -------------------------------------------------------
     ----                Spawn terminal                 ----
     -------------------------------------------------------
@@ -46,9 +64,7 @@ awful.keyboard.append_global_keybindings({
     end, { description = "Open a terminal", group = "launcher" }),
     --<~>--
     awful.key({ mod.super, mod.shift }, "Return", function()
-        awful.spawn(env.fterm, {
-            floating = true,
-        })
+        awful.spawn(env.fterm, { floating = true })
     end, { description = "Open a terminal", group = "launcher" }),
     -------------------------------------------------------
     ----              Spawn file manager               ----
@@ -72,6 +88,10 @@ awful.keyboard.append_global_keybindings({
     end, { description = "Open neovim", group = "launcher" }),
     --<~>--
     awful.key({ mod.super, mod.shift }, "v", function()
+        awful.spawn.with_shell(env.geditor)
+    end, { description = "Open neovide", group = "launcher" }),
+    --<~>--
+    awful.key({ mod.super, mod.ctrl }, "v", function()
         helpers.RoS(env.veditor)
     end, { description = "Open vscode", group = "launcher" }),
     -------------------------------------------------------
@@ -98,6 +118,10 @@ awful.keyboard.append_global_keybindings({
     end, { description = "Run or raise bpytop", group = "launcher" }),
     --<~>--
     awful.key({ mod.super, mod.shift }, "n", function()
+        helpers.RoS(env.music_app)
+    end, { description = "Run or raise ncmpcpp", group = "launcher" }),
+    --<~>--
+    awful.key({}, "XF86Tools", function()
         helpers.RoS(env.music_app)
     end, { description = "Run or raise ncmpcpp", group = "launcher" }),
 })
@@ -299,20 +323,12 @@ awful.keyboard.append_global_keybindings({
         helpers.brightctl(10)
     end, { description = "Increase brightness", group = "XF86" }),
     --<~>--
-    awful.key({}, "XF86Calculator", function()
-        helpers.brightctl(-10)
-    end, { description = "Decrease brightness", group = "XF86" }),
-    awful.key({}, "XF86Tools", function()
-        helpers.brightctl(10)
-    end, { description = "Increase brightness", group = "XF86" }),
-    --<~>--
-    awful.key({}, "XF86Mail", function()
+    awful.key({ mod.ctrl }, "XF86MonBrightnessDown", function()
         helpers.brightctl(0)
-    end, { description = "Set brightness to 10", group = "XF86" }),
-    --<~>--
-    -- awful.key({}, "XF86AudioStop", function()
-    --     helpers.brightctl(1)
-    -- end, { description = "Set brightness to MAX", group = "XF86" }),
+    end, { description = "Set brightness to 20", group = "XF86" }),
+    awful.key({ mod.ctrl }, "XF86MonBrightnessUp", function()
+        helpers.brightctl(1)
+    end, { description = "Set brightness to brighter", group = "XF86" }),
     -------------------------------------------------------
     ----                Volume control                 ----
     -------------------------------------------------------
@@ -329,13 +345,13 @@ awful.keyboard.append_global_keybindings({
     ----                 Media control                 ----
     -------------------------------------------------------
     awful.key({}, "XF86AudioPrev", function()
-        awful.spawn.with_shell("mpc -q prev")
+        helpers.mediactl("previous")
     end, { description = "Previous song", group = "XF86" }),
     awful.key({}, "XF86AudioNext", function()
-        awful.spawn.with_shell("mpc -q next")
+        helpers.mediactl("next")
     end, { description = "Next song", group = "XF86" }),
     awful.key({}, "XF86AudioPlay", function()
-        awful.spawn.with_shell("mpc -q toggle")
+        helpers.mediactl("play-pause")
     end, { description = "Toggle pause/play", group = "XF86" }),
 })
 --<~>--
@@ -393,6 +409,17 @@ awful.keyboard.append_global_keybindings({
     awful.key({
         modifiers = { mod.super },
         keygroup = "numpad",
+        on_press = function(index)
+            local t = awful.screen.focused().selected_tag
+            if t then
+                t.layout = t.layouts[index] or t.layout
+            end
+        end,
+        { description = "select layout directly", group = "layout" },
+    }),
+    awful.key({
+        modifiers = { mod.super, mod.alt },
+        keygroup = "numrow",
         on_press = function(index)
             local t = awful.screen.focused().selected_tag
             if t then

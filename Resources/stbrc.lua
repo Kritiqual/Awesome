@@ -95,9 +95,9 @@ myawesomemenu = {
             hotkeys_popup.show_help(nil, awful.screen.focused())
         end,
     },
-    { "manual", terminal .. " -e man awesome" },
+    { "manual",      terminal .. " -e man awesome" },
     { "edit config", editor_cmd .. " " .. awesome.conffile },
-    { "restart", awesome.restart },
+    { "restart",     awesome.restart },
     {
         "quit",
         function()
@@ -108,7 +108,7 @@ myawesomemenu = {
 
 mymainmenu = awful.menu({
     items = {
-        { "awesome", myawesomemenu, beautiful.awesome_icon },
+        { "awesome",       myawesomemenu, beautiful.awesome_icon },
         { "open terminal", terminal },
     },
 })
@@ -477,7 +477,7 @@ awful.rules.rules = {
     {
         rule_any = {
             instance = {
-                "DTA", -- Firefox addon DownThemAll.
+                "DTA",   -- Firefox addon DownThemAll.
                 "copyq", -- Includes session name in class.
                 "pinentry",
             },
@@ -486,7 +486,7 @@ awful.rules.rules = {
                 "Blueman-manager",
                 "Gpick",
                 "Kruler",
-                "MessageWin", -- kalarm.
+                "MessageWin",  -- kalarm.
                 "Sxiv",
                 "Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
                 "Wpa_gui",
@@ -499,9 +499,9 @@ awful.rules.rules = {
                 "Event Tester", -- xev.
             },
             role = {
-                "AlarmWindow", -- Thunderbird's calendar.
+                "AlarmWindow",   -- Thunderbird's calendar.
                 "ConfigManager", -- Thunderbird's about:config.
-                "pop-up", -- e.g. Google Chrome's (detached) Developer Tools.
+                "pop-up",        -- e.g. Google Chrome's (detached) Developer Tools.
             },
         },
         properties = { floating = true },

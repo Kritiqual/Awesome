@@ -21,29 +21,30 @@ local direction_translate = {
 ----               Single/double tap               ----
 -------------------------------------------------------
 local tap_timer = nil
-function helpers.SoD_tap(ST_func, DT_func)
+function helpers.SoD_tap(fnSingle, fnDouble)
     if tap_timer then
         tap_timer:stop()
         tap_timer = nil
-        DT_func()
+        fnDouble()
         -- naughty.notify({text = "We got a double tap"})
         return
     end
 
-    tap_timer = gears.timer.start_new(0.20, function()
+    tap_timer = gears.timer.start_new(0.2, function()
         tap_timer = nil
         -- naughty.notify({text = "We got a single tap"})
-        if ST_func then
-            ST_func()
+        if fnSingle then
+            fnSingle()
         end
         return false
     end)
 end
 -------------------------------------------------------
+-------------------------------------------------------
 ----                  Controllers                  ----
 -------------------------------------------------------
 function helpers.volumectl(value)
-    local cmd
+    local cmd, sign
     if value == 0 then
         cmd = "pactl set-sink-mute @DEFAULT_SINK@ toggle"
     else
@@ -56,18 +57,23 @@ function helpers.volumectl(value)
     awful.spawn.with_shell(cmd)
 end
 --<~>--
+function helpers.mediactl(value)
+    awful.spawn.with_shell("playerctl " .. value)
+end
+--<~>--
 function helpers.brightctl(value)
-    local cmd
+    local cmd, sign
     if value == 0 then
-        cmd = "xbacklight -set 10"
-        -- elseif value == 1 then
-        --     cmd = "xbacklight -set 100"
+        cmd = "xbacklight -set 20"
+    elseif value == 1 then
+        cmd = "xbacklight -set 100"
     else
         sign = value > 0 and "+" or ""
         cmd = "xbacklight " .. sign .. tostring(value)
     end
     awful.spawn.with_shell(cmd)
 end
+-------------------------------------------------------
 -------------------------------------------------------
 ----                    Resizer                    ----
 -------------------------------------------------------
@@ -98,6 +104,7 @@ function helpers.resizer(c, direction)
     end
 end
 -------------------------------------------------------
+-------------------------------------------------------
 ----                     Mover                     ----
 -------------------------------------------------------
 function helpers.swapper(c, direction)
@@ -108,11 +115,13 @@ function helpers.swapper(c, direction)
     end
 end
 -------------------------------------------------------
+-------------------------------------------------------
 ----                Raise or spawn                 ----
 -------------------------------------------------------
-function helpers.RoS(app, rules, matcher, unique_id, callback)
+function helpers.RoS(app, rules, unique_id, callback)
     awful.spawn.raise_or_spawn(app, rules, function(c)
-        if (c.class:lower() or c.instance:lower()) == app then
+        if string.find((c.class:lower() or c.instance:lower()), app) then
+            c:move_to_tag(awful.screen.focused().selected_tag)
             c:jump_to()
             return true
         else

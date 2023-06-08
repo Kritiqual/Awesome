@@ -62,7 +62,8 @@ client.connect_signal("unfocus", function(c)
     c.border_color = beautiful.border_normal
 end)
 --<~>--
-tag.connect_signal("property::layout", function(t) --hide all titlebars
+tag.connect_signal("property::layout", function(t)
+    --hide all titlebars
     local clients = t:clients()
     for k, c in pairs(clients) do
         awful.titlebar.hide(c)

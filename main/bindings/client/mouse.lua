@@ -20,26 +20,30 @@ client.connect_signal("request::default_mousebindings", function()
             c:activate({ context = "mouse_click", action = "mouse_move" })
         end),
         --<~>--
+        awful.button({ mod.super }, 2, function(c)
+            c:kill()
+        end),
+        --<~>--
         awful.button({ mod.super }, 3, function(c)
             c:activate({ context = "mouse_click", action = "mouse_resize" })
         end),
         -------------------------------------------------------
         ----                   Side keys                   ----
         -------------------------------------------------------
-        awful.button({}, "7", function()
+        awful.button({}, "11", function()
             naughty.destroy_all_notifications()
             naughty.notification({
                 title = "Client mouse debug",
-                message = "▲ 7 ▲ pressed",
+                message = "▲ 11 ▲ pressed",
                 timeout = 1,
             })
         end),
         --<~>--
-        awful.button({}, "6", function()
+        awful.button({}, "10", function()
             naughty.destroy_all_notifications()
             naughty.notification({
                 title = "Client mouse debug",
-                message = "▼ 6 ▼ pressed",
+                message = "▼ 10 ▼ pressed",
                 timeout = 1,
             })
         end),

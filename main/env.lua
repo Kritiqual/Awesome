@@ -10,6 +10,7 @@ return {
     term = term,
     fterm = term .. " --class fterm",
     veditor = "code",
+    geditor = "neovide",
     editor = term_o .. " --class editor --detach nvim",
     vfm = "thunar",
     fm = term_o .. " --class fm --detach ranger",
@@ -42,7 +43,7 @@ return {
         -- awful.layout.suit.spiral,
         -- awful.layout.suit.spiral.dwindle,
         -- awful.layout.suit.corner.nw,
-        -- awful.layout.suit.corner.ne,
+        -- awful.layout.suit.corner.ne,`
         -- awful.layout.suit.corner.sw,
         -- awful.layout.suit.corner.se,
     },

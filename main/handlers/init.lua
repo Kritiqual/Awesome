@@ -10,4 +10,3 @@ return {
     rules = require("main.handlers.rules"),
     awful.spawn.with_shell("~/.config/awesome/main/handlers/autorun.sh"),
 }
- 

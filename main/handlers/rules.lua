@@ -6,8 +6,8 @@
 local awful = require("awful")
 local ruled = require("ruled")
 local beautiful = require("beautiful")
-screen_width = awful.screen.focused().geometry.width
-screen_height = awful.screen.focused().geometry.height
+local screen_width = awful.screen.focused().geometry.width
+local screen_height = awful.screen.focused().geometry.height
 --<~>--
 ruled.client.connect_signal("request::rules", function()
     -------------------------------------------------------
@@ -18,7 +18,8 @@ ruled.client.connect_signal("request::rules", function()
         rule = {},
         properties = {
             raise = true,
-            focus = awful.client.focus.filter,
+            -- focus = awful.client.focus.filter,
+            focus = awful.client.focus,
             screen = awful.screen.focused,
             titlebars_enabled = beautiful.titlebars_enabled,
             border_width = beautiful.border_width,
@@ -39,7 +40,7 @@ ruled.client.connect_signal("request::rules", function()
     ruled.client.append_rule({
         rule_any = {
             instance = {
-                "DTA", -- Firefox addon DownThemAll.
+                "DTA",   -- Firefox addon DownThemAll.
                 "copyq", -- Includes session name in class.
                 "riotclientux.exe",
                 "leagueclientux.exe",
@@ -106,7 +107,7 @@ ruled.client.connect_signal("request::rules", function()
                 "conversation",
             },
         },
-        properties = { placement = centered_client_placement },
+        properties = { placement = awful.placement.centered },
     })
     -------------------------------------------------------
     ----                   Titlebars                   ----
@@ -182,11 +183,23 @@ ruled.client.connect_signal("request::rules", function()
     ----                 App specific                  ----
     -------------------------------------------------------
     ruled.client.append_rule({
-        rule_any = { class = { "Blueman-manager" } },
+        rule_any = {
+            class = {
+                "Blueman-manager",
+                "Pavucontrol",
+                "Ibus-ui-gtk3",
+                "Ibus-setup",
+                "Nwg-look",
+                "Seahorse",
+                "qBittorrent"
+            }
+        },
         properties = {
             floating = true,
-            width = screen_width / 3,
-            height = screen_height / 3,
+            x = 0,
+            y = 0,
+            width = screen_width * 0.4,
+            height = screen_height * 0.4,
             placement = awful.placement.top_left,
         },
     })
@@ -195,15 +208,25 @@ ruled.client.connect_signal("request::rules", function()
         rule_any = { class = { "Caprine" } },
         properties = {
             floating = true,
-            width = screen_width / 2,
-            height = screen_height * 0.6,
+            width = screen_width * 0.65,
+            height = screen_height * 0.75,
+            placement = awful.placement.centered
         },
-        callback = function(c)
-            awful.placement.centered(c, {
-                honor_padding = true,
-                honor_workarea = true,
-            })
-        end,
+    })
+    --<~>--
+    ruled.client.append_rule({
+        rule_any = {
+            class = { "Thunar", "fm", "dolphin" },
+        },
+        except_any = {
+            type = { "dialog" },
+        },
+        properties = {
+            floating = true,
+            width = screen_width * 0.41,
+            height = screen_height * 0.47,
+            placement = awful.placement.top_left,
+        }
     })
     --<~>--
     -- ruled.client.append_rule({
@@ -232,32 +255,6 @@ ruled.client.connect_signal("request::rules", function()
     -- })
     --<~>--
     ruled.client.append_rule({
-        rule_any = {
-            class = { "dolphin" },
-        },
-        properties = {
-            floating = true,
-            width = screen_width * 0.45,
-            height = screen_height * 0.5,
-            placement = awful.placement.top_left,
-        },
-    })
-    ruled.client.append_rule({
-        rule_any = {
-            class = { "Thunar", "fm" },
-        },
-        except_any = {
-            type = { "dialog" },
-        },
-        properties = {
-            floating = true,
-            width = screen_width * 0.45,
-            height = screen_height * 0.5,
-            placement = awful.placement.top_left,
-        },
-    })
-    --<~>--
-    ruled.client.append_rule({
         rule_any = { class = { "Gcr-prompter" } },
         properties = {
             floating = true,
@@ -271,26 +268,10 @@ ruled.client.connect_signal("request::rules", function()
         rule_any = { role = { "GtkFileChooserDialog" } },
         properties = {
             floating = true,
-            width = screen_width * 0.55,
-            height = screen_height * 0.65,
+            width = screen_width * 0.45,
+            height = screen_height * 0.5,
             placement = awful.placement.centered,
         },
-    })
-    --<~>--
-    ruled.client.append_rule({
-        rule_any = {
-            class = {
-                "Ibus-ui-gtk3",
-                "Ibus-setup",
-            },
-        },
-        properties = { floating = true },
-        callback = function(c)
-            awful.placement.centered(c, {
-                honor_padding = true,
-                honor_workarea = true,
-            })
-        end,
     })
     --<~>--
     ruled.client.append_rule({
@@ -305,12 +286,7 @@ ruled.client.connect_signal("request::rules", function()
             width = screen_width * 0.7,
             height = screen_height * 0.75,
         },
-        callback = function(c)
-            awful.placement.centered(c, {
-                honor_workarea = true,
-                honor_padding = true,
-            })
-        end,
+        callback = function(c) awful.placement.centered(c) end,
     })
     --<~>--
     ruled.client.append_rule({
@@ -349,40 +325,15 @@ ruled.client.connect_signal("request::rules", function()
     })
     --<~>--
     ruled.client.append_rule({
-        rule_any = { class = { "Lxappearance" } },
-        properties = {
-            floating = true,
-            width = screen_width * 0.4,
-            height = screen_height * 0.4,
-            placement = awful.placement.top_left,
-        },
-    })
-    --<~>--
-    ruled.client.append_rule({
         rule_any = {
             class = { "music", "sys_mon" },
         },
         properties = {
             floating = true,
             width = screen_width * 0.45,
-            height = screen_height * 0.50,
+            height = screen_height * 0.5,
         },
-        callback = function(c)
-            awful.placement.centered(c, {
-                honor_workarea = true,
-                honor_padding = true,
-            })
-        end,
-    })
-    --<~>--
-    ruled.client.append_rule({
-        rule_any = { class = { "Pavucontrol" } },
-        properties = {
-            floating = true,
-            width = screen_width / 3,
-            height = screen_height / 3,
-            placement = awful.placement.top_left,
-        },
+        callback = function(c) awful.placement.centered(c) end
     })
     --<~>--
     ruled.client.append_rule({
@@ -400,46 +351,16 @@ ruled.client.connect_signal("request::rules", function()
     ruled.client.append_rule({
         rule_any = {
             class = {
-                "qbittorrent",
-                "qBittorrent",
-            },
-        },
-        properties = {
-            floating = true,
-            x = 0,
-            y = 0,
-            width = screen_width / 3,
-            height = screen_height / 3,
-        },
-    })
-    --<~>--
-    ruled.client.append_rule({
-        rule_any = {
-            class = {
                 "qt5ct",
                 "Kvantum Manager",
-            },
-            instance = {
-                "kvantummanager",
             },
         },
         properties = {
             floating = true,
             width = screen_width * 0.45,
-            height = screen_height * 0.54,
-            placement = awful.placement.top_left,
-            size_hints_honor = true,
+            height = screen_height * 0.6,
         },
-    })
-    --<~>--
-    ruled.client.append_rule({
-        rule_any = { class = { "Seahorse" } },
-        properties = {
-            floating = true,
-            width = screen_width / 3,
-            height = screen_height / 3,
-            placement = awful.placement.top_left,
-        },
+        callback = function(c) awful.placement.centered(c) end
     })
     --<~>--
     ruled.client.append_rule({
@@ -466,36 +387,13 @@ ruled.client.connect_signal("request::rules", function()
         },
     })
     ruled.client.append_rule({
-        rule_any = {
-            class = { "fterm" },
-        },
+        rule_any = { class = { "fterm" }, },
         properties = {
             floating = true,
             width = screen_width * 0.45,
             height = screen_height * 0.5,
         },
-        callback = function(c)
-            awful.placement.centered(c, {
-                honor_padding = true,
-                honor_workarea = true,
-            })
-        end,
-    })
-    --<~>--
-    ruled.client.append_rule({
-        rule_any = { class = "VirtualBox Machine" },
-        properties = {
-            floating = true,
-            width = 1280,
-            height = 1024,
-        },
-        callback = function(c)
-            awful.placement.centered(c, {
-                size_hints_honor = false,
-                honor_padding = true,
-                honor_workarea = true,
-            })
-        end,
+        callback = function(c) awful.placement.centered(c) end,
     })
     --<~>--
     -- ruled.client.append_rule({
@@ -531,10 +429,7 @@ ruled.client.connect_signal("request::rules", function()
             -- hidden = true,
         },
         callback = function(c)
-            awful.placement.top_right(c, {
-                honor_padding = true,
-                honor_workarea = true,
-            })
+            awful.placement.centered(c)
         end,
     })
     ruled.client.append_rule({
@@ -551,12 +446,7 @@ ruled.client.connect_signal("request::rules", function()
             height = 400,
             ontop = false,
         },
-        callback = function(c)
-            awful.placement.centered(c, {
-                honor_padding = true,
-                honor_workarea = true,
-            })
-        end,
+        callback = function(c) awful.placement.centered(c) end,
     })
     ruled.client.append_rule({
         rule_any = {
@@ -577,21 +467,11 @@ ruled.client.connect_signal("request::rules", function()
             height = screen_height * 0.65,
             ontop = false,
             focusable = true,
-            placement = awful.placement.centered,
         },
-        callback = function(c)
-            awful.placement.centered(c, {
-                honor_padding = true,
-                honor_workarea = true,
-            })
-        end,
+        callback = function(c) awful.placement.centered(c) end,
     })
     ruled.client.append_rule({
-        rule_any = {
-            name = {
-                "Invite to Zoom",
-            },
-        },
+        rule_any = { name = { "Invite to Zoom", }, },
         properties = { placement = awful.placement.centered },
     })
     ruled.client.append_rule({
