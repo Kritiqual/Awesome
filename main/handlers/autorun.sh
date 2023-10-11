@@ -6,4 +6,4 @@ run /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 run xcape -e Caps_Lock=Escape
 run ibus-daemon -drx
 run imwheel -b 0
-# run picom -b
+run picom -b

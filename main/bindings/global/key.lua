@@ -106,14 +106,20 @@ awful.keyboard.append_global_keybindings({
     -------------------------------------------------------
     ----            Raise/Spawn other apps             ----
     -------------------------------------------------------
-    awful.key({ mod.super }, "b", function()
-        helpers.RoS(env.browser)
-    end, { description = "Run or raise firefox", group = "launcher" }),
     awful.key({}, "XF86HomePage", function()
         helpers.RoS(env.browser)
     end, { description = "Run or raise firefox", group = "launcher" }),
-    --<~>--
+    awful.key({ mod.super }, "b", function()
+        helpers.RoS(env.browser)
+    end, { description = "Run or raise Firefox", group = "launcher" }),
+    awful.key({ mod.super, mod.ctrl }, "b", function()
+        helpers.RoS(env.ebrowser)
+    end, { description = "Run or raise Edge", group = "launcher" }),
     awful.key({ mod.super, mod.shift }, "b", function()
+        helpers.RoS(env.cbrowser)
+    end, { description = "Run or raise Chrome", group = "launcher" }),
+    --<~>--
+    awful.key({ mod.super, mod.shift }, "t", function()
         helpers.RoS(env.sys_mon)
     end, { description = "Run or raise bpytop", group = "launcher" }),
     --<~>--

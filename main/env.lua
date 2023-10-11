@@ -14,6 +14,8 @@ return {
     editor = term_o .. " --class editor --detach nvim",
     vfm = "thunar",
     fm = term_o .. " --class fm --detach ranger",
+    ebrowser = "microsoft-edge-stable",
+    cbrowser = "google-chrome-stable",
     browser = "firefox",
     mchat = "caprine",
     dchat = "discord",
