@@ -65,7 +65,7 @@ awful.keyboard.append_global_keybindings({
     --<~>--
     awful.key({ mod.super, mod.shift }, "Return", function()
         awful.spawn(env.fterm, { floating = true })
-    end, { description = "Open a terminal", group = "launcher" }),
+    end, { description = "Open a floating terminal", group = "launcher" }),
     -------------------------------------------------------
     ----              Spawn file manager               ----
     -------------------------------------------------------
@@ -104,11 +104,11 @@ awful.keyboard.append_global_keybindings({
         helpers.RoS(env.dchat)
     end, { description = "Run or raise discord", group = "launcher" }),
     -------------------------------------------------------
-    ----            Raise/Spawn other apps             ----
+    ----                 Spawn Browser                 ----
     -------------------------------------------------------
     awful.key({}, "XF86HomePage", function()
         helpers.RoS(env.browser)
-    end, { description = "Run or raise firefox", group = "launcher" }),
+    end, { description = "Run or raise Firefox", group = "launcher" }),
     awful.key({ mod.super }, "b", function()
         helpers.RoS(env.browser)
     end, { description = "Run or raise Firefox", group = "launcher" }),
@@ -118,18 +118,24 @@ awful.keyboard.append_global_keybindings({
     awful.key({ mod.super, mod.shift }, "b", function()
         helpers.RoS(env.cbrowser)
     end, { description = "Run or raise Chrome", group = "launcher" }),
-    --<~>--
-    awful.key({ mod.super, mod.shift }, "t", function()
-        helpers.RoS(env.sys_mon)
-    end, { description = "Run or raise bpytop", group = "launcher" }),
-    --<~>--
+    -------------------------------------------------------
+    ----              Spawn music player               ----
+    -------------------------------------------------------
+    awful.key({ mod.super, mod.ctrl }, "n", function()
+        helpers.RoS(env.vmusic_app)
+    end, { description = "Run or raise Spotify (Spotx)", group = "launcher" }),
     awful.key({ mod.super, mod.shift }, "n", function()
         helpers.RoS(env.music_app)
     end, { description = "Run or raise ncmpcpp", group = "launcher" }),
-    --<~>--
     awful.key({}, "XF86Tools", function()
         helpers.RoS(env.music_app)
     end, { description = "Run or raise ncmpcpp", group = "launcher" }),
+    -------------------------------------------------------
+    ----            Raise/Spawn other apps             ----
+    -------------------------------------------------------
+    awful.key({ mod.super, mod.shift }, "t", function()
+        helpers.RoS(env.sys_mon)
+    end, { description = "Run or raise bpytop", group = "launcher" }),
 })
 --<~>--
 awful.keyboard.append_global_keybindings({

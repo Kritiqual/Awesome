@@ -205,13 +205,13 @@ ruled.client.connect_signal("request::rules", function()
     })
     --<~>--
     ruled.client.append_rule({
-        rule_any = { class = { "Caprine" } },
+        rule_any = { class = { "Caprine", "Spotify" } },
         properties = {
             floating = true,
             width = screen_width * 0.65,
             height = screen_height * 0.75,
-            placement = awful.placement.centered
         },
+        callback = function(c) awful.placement.centered(c) end,
     })
     --<~>--
     ruled.client.append_rule({
